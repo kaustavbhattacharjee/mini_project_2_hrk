@@ -1,12 +1,15 @@
 import unittest
-from Calculator import Calculator
+
+from Calculator.Calculator import Calculator
+
 
 class MyTestCase(unittest.TestCase):
+    calculator = Calculator()
     def test_instantiate_calculator(self):
-        calculator = Calculator()
-        self.assertIsInstance(calculator, Calculator)
+        self.assertIsInstance(self.calculator, Calculator)
 
     def test_mean(self):
+        #self.assertEqual(self.calculator.mean(),2)
         pass
     def test_median(self):
         pass

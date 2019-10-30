@@ -1,7 +1,10 @@
+from Calculator.def_files.Confidence_interval import Confidence_interval
+
 class Calculator:
     def __init__(self):
         pass
     def mean(self):
+        #return Mean()
         pass
     def median(self):
         pass
