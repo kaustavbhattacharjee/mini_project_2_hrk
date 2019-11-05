@@ -17,9 +17,9 @@ from Calculator.def_files.Z_score import Z_score
 class Calculator:
     def __init__(self):
         pass
-    def mean(self):
-        #return Mean()
-        pass
+    def mean(self,my_population):
+        return Mean(my_population)
+
     def median(self):
         # return Median()
         pass

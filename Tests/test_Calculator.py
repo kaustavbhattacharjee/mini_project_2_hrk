@@ -1,6 +1,8 @@
 import unittest
 
 from Calculator.Calculator import Calculator
+from CsvReader.Read_answer import read_answer
+from CsvReader.Read_population import read_population
 
 
 class MyTestCase(unittest.TestCase):
@@ -9,8 +11,11 @@ class MyTestCase(unittest.TestCase):
         self.assertIsInstance(self.calculator, Calculator)
 
     def test_mean(self):
-        #self.assertEqual(self.calculator.mean(),2)
-        pass
+        my_population=read_population("population.csv")
+        expected_output=read_answer("answer_mean.csv")
+        self.assertEqual(self.calculator.mean(my_population),expected_output) #positive test
+        self.assertNotEqual(self.calculator.mean(my_population),(expected_output+1)) #negative test
+
     def test_median(self):
         pass
     def test_mode(self):
