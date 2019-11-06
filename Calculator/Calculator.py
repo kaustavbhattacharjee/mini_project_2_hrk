@@ -20,9 +20,10 @@ class Calculator:
     def mean(self,my_population):
         return Mean(my_population)
 
-    def median(self):
-        # return Median()
-        pass
+    def median(self, my_population):
+        return Median(my_population)
+
+
     def mode(self):
         # return Mode()
         pass
@@ -50,9 +51,9 @@ class Calculator:
     def p_value(self):
         # return P_value()
         pass
-    def proportion(self):
-        # return Proportion()
-        pass
+    def proportion(self,my_population):
+        return Proportion(my_population)
+
     def sample_mean(self):
         # return Sample_mean()
         pass

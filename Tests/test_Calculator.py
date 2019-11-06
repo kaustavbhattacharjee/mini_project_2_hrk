@@ -17,7 +17,11 @@ class MyTestCase(unittest.TestCase):
         self.assertNotEqual(self.calculator.mean(my_population),(expected_output+1)) #negative test
 
     def test_median(self):
-        pass
+        my_population = read_population("population.csv")
+        expected_output = read_answer("answer_median.csv")
+        self.assertEqual(self.calculator.median(my_population), expected_output)  # positive test
+        self.assertNotEqual(self.calculator.median(my_population), (expected_output + 1))  # negative test
+
     def test_mode(self):
         pass
     def test_sd(self):
@@ -37,7 +41,11 @@ class MyTestCase(unittest.TestCase):
     def test_p_value(self):
         pass
     def test_proportion(self):
-        pass
+        my_population = read_population("population.csv")
+        expected_output = read_answer("answer_proportion.csv")
+        self.assertEqual(self.calculator.proportion(my_population), expected_output)  # positive test
+        self.assertNotEqual(self.calculator.proportion(my_population), (expected_output + 1))  # negative test
+
     def test_sample_mean(self):
         pass
     def test_sample_sd(self):
