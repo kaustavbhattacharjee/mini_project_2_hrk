@@ -41,7 +41,11 @@ class MyTestCase(unittest.TestCase):
     def test_confidence_interval(self):
         pass
     def test_variance(self):
-        pass
+        my_population = read_population("population.csv")
+        expected_output = read_answer("answer_variance.csv")
+        self.assertEqual(self.calculator.variance(my_population), float(expected_output))  # positive test
+        self.assertNotEqual(self.calculator.variance(my_population), float(expected_output + 1))  # negative test
+
     def test_p_value(self):
         pass
     def test_proportion(self):

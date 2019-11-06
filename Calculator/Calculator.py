@@ -28,8 +28,9 @@ class Calculator:
         return Mode(my_population)
 
     def sd(self):
-        # return Sd()
+        # return SD()
         pass
+
     def variance_popu_proportion(self):
         # return Variance_popu_proportion()
         pass
@@ -45,9 +46,10 @@ class Calculator:
     def confidence_interval(self):
         # return Confidence_interval()
         pass
-    def variance(self):
-        # return Variance()
-        pass
+
+    def variance(self,my_population):
+        return Variance(my_population)
+
     def p_value(self):
         # return P_value()
         pass
