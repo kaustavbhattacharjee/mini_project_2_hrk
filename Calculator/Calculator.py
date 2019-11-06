@@ -24,9 +24,9 @@ class Calculator:
         return Median(my_population)
 
 
-    def mode(self):
-        # return Mode()
-        pass
+    def mode(self, my_population):
+        return Mode(my_population)
+
     def sd(self):
         # return Sd()
         pass
