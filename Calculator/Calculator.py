@@ -20,9 +20,10 @@ class Calculator:
     def mean(self,my_population):
         return Mean(my_population)
 
-    def median(self):
-        # return Median()
-        pass
+    def median(self, my_population):
+        return Median(my_population)
+
+
     def mode(self):
         # return Mode()
         pass
