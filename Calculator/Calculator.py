@@ -48,9 +48,9 @@ class Calculator:
             new_standardised_score.append(round(x, 2))  # creating rounded zscore upto 2 decimal points
         return new_standardised_score
 
-    def pop_correlation_coefficient(self):
-        #return Pop_correlation_coefficient(my_population)
-        pass
+    def pop_correlation_coefficient(self,my_population):
+        my_population2 = list(map(lambda x: x + 5, my_population))
+        return round(Pop_correlation_coefficient(my_population, my_population2),2)
 
     def confidence_interval(self):
         # return Confidence_interval()

@@ -52,7 +52,11 @@ class MyTestCase(unittest.TestCase):
         self.assertNotEqual(self.calculator.z_score(my_population),(list(map(lambda x: x + 1, expected_output))))  # negative test
 
     def test_pop_correlation_coefficient(self):
-         pass
+        my_population = read_population("population.csv")
+        expected_output = read_answer("answer_pop_correlation_coefficient.csv")
+        self.assertEqual(self.calculator.pop_correlation_coefficient(my_population), expected_output)  # positive test
+        self.assertNotEqual(self.calculator.pop_correlation_coefficient(my_population), (expected_output + 1))  # negative test
+
     def test_confidence_interval(self):
         pass
     def test_variance(self):
