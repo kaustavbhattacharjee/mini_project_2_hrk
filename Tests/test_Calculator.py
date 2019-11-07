@@ -29,7 +29,12 @@ class MyTestCase(unittest.TestCase):
         self.assertNotEqual(self.calculator.mode(my_population), (expected_output + 1))  # negative test
 
     def test_sd(self):
-        pass
+        my_population = read_population("population.csv")
+        expected_output = read_answer("answer_sd.csv")
+        expected_output = round(float(expected_output),2)
+        self.assertEqual(self.calculator.sd(my_population), expected_output)  # positive test
+        self.assertNotEqual(self.calculator.sd(my_population), (expected_output + 1))  # negative test
+
     def test_variance_popu_proportion(self):
         pass
     def test_z_score(self):

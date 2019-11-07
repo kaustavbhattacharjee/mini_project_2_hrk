@@ -27,9 +27,9 @@ class Calculator:
     def mode(self, my_population):
         return Mode(my_population)
 
-    def sd(self):
-        # return SD()
-        pass
+    def sd(self, my_population):
+        return Sd(my_population)
+
 
     def variance_popu_proportion(self):
         # return Variance_popu_proportion()
