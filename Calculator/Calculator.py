@@ -34,9 +34,12 @@ class Calculator:
     def variance_popu_proportion(self):
         # return Variance_popu_proportion()
         pass
-    def z_score(self):
-        #return
-        pass
+    def z_score(self,my_population):
+        new_z_score1 =  Z_score(my_population)
+        new_z_score = list()
+        for x in new_z_score1:
+            new_z_score.append(round(x,2)) #creating rounded zscore upto 2 decimal points
+        return new_z_score
 
     def standardised_score(self):
         #return Standardised_score()
