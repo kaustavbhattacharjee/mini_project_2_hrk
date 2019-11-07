@@ -38,11 +38,15 @@ class MyTestCase(unittest.TestCase):
     def test_variance_popu_proportion(self):
         pass
     def test_z_score(self):
-        pass
+        my_population = read_population("population.csv")
+        expected_output = read_answer("answer_zscore.csv")
+        self.assertEqual(self.calculator.z_score(my_population), expected_output)  # positive test
+        self.assertNotEqual(self.calculator.z_score(my_population), (expected_output + 1))  # negative test
     def test_standardised_score(self):
         pass
+
     def test_pop_correlation_coefficient(self):
-        pass
+         pass
     def test_confidence_interval(self):
         pass
     def test_variance(self):
@@ -60,7 +64,11 @@ class MyTestCase(unittest.TestCase):
         self.assertNotEqual(self.calculator.proportion(my_population), (expected_output + 1))  # negative test
 
     def test_sample_mean(self):
-        pass
+        my_population = read_population("population.csv")
+        expected_output = read_answer("answer_sample_mean.csv")
+        self.assertEqual(self.calculator.sample_mean(my_population), expected_output)  # positive test
+        self.assertNotEqual(self.calculator.sample_mean(my_population), (expected_output + 1))  # negative test
+
     def test_sample_sd(self):
         pass
     def test_variance_sample_proportion(self):
