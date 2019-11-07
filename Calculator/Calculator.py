@@ -24,12 +24,13 @@ class Calculator:
         return Median(my_population)
 
 
-    def mode(self):
-        # return Mode()
-        pass
-    def sd(self):
-        # return Sd()
-        pass
+    def mode(self, my_population):
+        return Mode(my_population)
+
+    def sd(self, my_population):
+        return Sd(my_population)
+
+
     def variance_popu_proportion(self):
         # return Variance_popu_proportion()
         pass
@@ -47,9 +48,10 @@ class Calculator:
     def confidence_interval(self):
         # return Confidence_interval()
         pass
-    def variance(self):
-        # return Variance()
-        pass
+
+    def variance(self,my_population):
+        return Variance(my_population)
+
     def p_value(self):
         # return P_value()
         pass
