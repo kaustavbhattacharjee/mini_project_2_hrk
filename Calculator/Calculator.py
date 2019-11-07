@@ -34,8 +34,9 @@ class Calculator:
     def variance_popu_proportion(self):
         # return Variance_popu_proportion()
         pass
-    def z_score(self,my_population):
-        return Z_score(my_population)
+    def z_score(self):
+        #return
+        pass
 
     def standardised_score(self):
         #return Standardised_score()

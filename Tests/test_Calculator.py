@@ -38,10 +38,7 @@ class MyTestCase(unittest.TestCase):
     def test_variance_popu_proportion(self):
         pass
     def test_z_score(self):
-        my_population = read_population("population.csv")
-        expected_output = read_answer("answer_zscore.csv")
-        self.assertEqual(self.calculator.z_score(my_population), expected_output)  # positive test
-        self.assertNotEqual(self.calculator.z_score(my_population), (expected_output + 1))  # negative test
+        pass
     def test_standardised_score(self):
         pass
 
