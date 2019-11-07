@@ -35,14 +35,17 @@ class Calculator:
         # return Variance_popu_proportion()
         pass
     def z_score(self):
-        # return Z_score()
+        #return
         pass
+
     def standardised_score(self):
-        # return Standardised_score()
+        #return Standardised_score()
         pass
+
     def pop_correlation_coefficient(self):
-        # return Pop_correlation_coefficient()
+        #return Pop_correlation_coefficient(my_population)
         pass
+
     def confidence_interval(self):
         # return Confidence_interval()
         pass
@@ -56,12 +59,13 @@ class Calculator:
     def proportion(self,my_population):
         return Proportion(my_population)
 
-    def sample_mean(self):
-        # return Sample_mean()
+    def sample_mean(self,my_population):
+        return Sample_mean(my_population)
+
+    def sample_sd(self,my_population):
+        return Sample_sd(my_population)
         pass
-    def sample_sd(self):
-        # return Sample_sd()
-        pass
-    def variance_sample_proportion(self):
-        # return Variance_sample_proportion()
-        pass
+    def variance_sample_proportion(self,my_population):
+        return Variance_sample_proportion(my_population)
+
+
