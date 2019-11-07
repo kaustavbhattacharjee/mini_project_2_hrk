@@ -1,4 +1,3 @@
-from pprint import pprint
 
 def Variance_sample_proportion(my_population):
 
