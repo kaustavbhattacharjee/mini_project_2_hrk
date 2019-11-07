@@ -72,7 +72,10 @@ class MyTestCase(unittest.TestCase):
     def test_sample_sd(self):
         pass
     def test_variance_sample_proportion(self):
-        pass
+        my_population = read_population("population.csv")
+        expected_output = read_answer("answer_variance_sample_proportion.csv")
+        self.assertEqual(self.calculator.variance_sample_proportion(my_population), expected_output)  # positive test
+        self.assertNotEqual(self.calculator.variance_sample_proportion(my_population), (expected_output + 1))  # negative test
 
 
 if __name__ == '__main__':
