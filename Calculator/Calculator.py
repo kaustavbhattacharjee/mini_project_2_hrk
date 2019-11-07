@@ -61,8 +61,8 @@ class Calculator:
     def sample_mean(self,my_population):
         return Sample_mean(my_population)
 
-    def sample_sd(self,):
-        # return Sample_sd()
+    def sample_sd(self,my_population):
+        return Sample_sd(my_population)
         pass
     def variance_sample_proportion(self,my_population):
         return Variance_sample_proportion(my_population)
