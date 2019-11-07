@@ -46,7 +46,10 @@ class MyTestCase(unittest.TestCase):
 
 
     def test_standardised_score(self):
-        pass
+        my_population = read_population("population.csv")
+        expected_output = read_answer_list("answer_zscore.csv")
+        self.assertListEqual(self.calculator.z_score(my_population), expected_output)  # positive test
+        self.assertNotEqual(self.calculator.z_score(my_population),(list(map(lambda x: x + 1, expected_output))))  # negative test
 
     def test_pop_correlation_coefficient(self):
          pass
