@@ -28,7 +28,7 @@ class Calculator:
         return Mode(my_population)
 
     def sd(self, my_population):
-        return Sd(my_population)
+        return round(Sd(my_population),2)
 
 
     def variance_popu_proportion(self):
@@ -52,12 +52,12 @@ class Calculator:
         my_population2 = list(map(lambda x: x + 5, my_population))
         return round(Pop_correlation_coefficient(my_population, my_population2),2)
 
-    def confidence_interval(self):
-        # return Confidence_interval()
-        pass
+    def confidence_interval(self,my_population):
+        confidence_level = 0.95
+        return round(Confidence_interval(my_population,confidence_level),2)
 
     def variance(self,my_population):
-        return Variance(my_population)
+        return round(Variance(my_population),2)
 
     def p_value(self):
         # return P_value()
