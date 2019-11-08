@@ -28,30 +28,36 @@ class Calculator:
         return Mode(my_population)
 
     def sd(self, my_population):
-        return Sd(my_population)
+        return round(Sd(my_population),2)
 
 
     def variance_popu_proportion(self):
         # return Variance_popu_proportion()
         pass
-    def z_score(self):
-        #return
-        pass
+    def z_score(self,my_population):
+        new_z_score1 =  Z_score(my_population)
+        new_z_score = list()
+        for x in new_z_score1:
+            new_z_score.append(round(x,2)) #creating rounded zscore upto 2 decimal points
+        return new_z_score
 
-    def standardised_score(self):
-        #return Standardised_score()
-        pass
+    def standardised_score(self,my_population):
+        new_standardised_score1 = Z_score(my_population)
+        new_standardised_score = list()
+        for x in new_standardised_score1:
+            new_standardised_score.append(round(x, 2))  # creating rounded zscore upto 2 decimal points
+        return new_standardised_score
 
-    def pop_correlation_coefficient(self):
-        #return Pop_correlation_coefficient(my_population)
-        pass
+    def pop_correlation_coefficient(self,my_population):
+        my_population2 = list(map(lambda x: x + 5, my_population))
+        return round(Pop_correlation_coefficient(my_population, my_population2),2)
 
-    def confidence_interval(self):
-        # return Confidence_interval()
-        pass
+    def confidence_interval(self,my_population):
+        confidence_level = 0.95
+        return round(Confidence_interval(my_population,confidence_level),2)
 
     def variance(self,my_population):
-        return Variance(my_population)
+        return round(Variance(my_population),2)
 
     def p_value(self):
         # return P_value()
@@ -64,7 +70,6 @@ class Calculator:
 
     def sample_sd(self,my_population):
         return Sample_sd(my_population)
-        pass
     def variance_sample_proportion(self,my_population):
         return Variance_sample_proportion(my_population)
 
