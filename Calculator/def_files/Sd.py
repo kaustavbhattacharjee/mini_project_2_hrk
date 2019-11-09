@@ -15,4 +15,4 @@ def Squareroot(num):
 
 def Sd(my_population):
     calculated_variance = Variance(my_population)
-    return Squareroot(calculated_variance)
+    return calculated_variance ** 0.5
