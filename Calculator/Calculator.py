@@ -31,9 +31,9 @@ class Calculator:
         return round(Sd(my_population),2)
 
 
-    def variance_popu_proportion(self):
-        # return Variance_popu_proportion()
-        pass
+    def variance_popu_proportion(self, my_population):
+        return round(Variance_popu_proportion(my_population),2)
+
     def z_score(self,my_population):
         new_z_score1 =  Z_score(my_population)
         new_z_score = list()
