@@ -13,6 +13,9 @@ from Calculator.def_files.Variance import Variance
 from Calculator.def_files.Variance_popu_proportion import Variance_popu_proportion
 from Calculator.def_files.Variance_sample_proportion import Variance_sample_proportion
 from Calculator.def_files.Z_score import Z_score
+from  CsvReader.Write_answer import write_answer
+from random import sample
+import math
 
 class Calculator:
     def __init__(self):
@@ -66,11 +69,16 @@ class Calculator:
         return Proportion(my_population)
 
     def sample_mean(self,my_population):
-        return Sample_mean(my_population)
+        sample_list = sample(my_population,math.floor(len(my_population)/2))
+        write_answer("answer_sample_mean.csv",Mean(sample_list))
+        return Sample_mean(sample_list)
 
     def sample_sd(self,my_population):
-        return Sample_sd(my_population)
+        sample_list = sample(my_population, math.floor(len(my_population) / 2))
+        write_answer("answer_sample_sd.csv", round(Sd(sample_list)))
+        return round(Sample_sd(sample_list))
+
     def variance_sample_proportion(self,my_population):
-        return Variance_sample_proportion(my_population)
+        return round(Variance_sample_proportion(my_population),2)
 
 
