@@ -18,7 +18,7 @@ class Calculator:
     def __init__(self):
         pass
     def mean(self,my_population):
-        return Mean(my_population)
+        return round(Mean(my_population),2)
 
     def median(self, my_population):
         return Median(my_population)
