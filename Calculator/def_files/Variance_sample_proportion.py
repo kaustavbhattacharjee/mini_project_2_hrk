@@ -9,8 +9,8 @@ def Variance_sample_proportion(my_population):
     var3=sum(my_list)
     var4= var3 - var2
     var5=len(my_population) - 1
-    sample_varience=round(var4/var5,2)
-    return sample_varience
+    sample_variance=(var4/var5)
+    return sample_variance
 
 
 
