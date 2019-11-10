@@ -10,5 +10,5 @@ def Proportion(my_population):
     for i in my_population:
         if (i>higher_limit) or (i< lower_limit):
             count = count + 1
-    p = round(count/float(len(my_population)),2)
+    p = (count/float(len(my_population)))
     return p

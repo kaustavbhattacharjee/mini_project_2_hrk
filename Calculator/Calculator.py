@@ -66,7 +66,7 @@ class Calculator:
         # return P_value()
         pass
     def proportion(self,my_population):
-        return Proportion(my_population)
+        return round(Proportion(my_population),2)
 
     def sample_mean(self,my_population):
         sample_list = sample(my_population,math.floor(len(my_population)/2))
@@ -75,10 +75,12 @@ class Calculator:
 
     def sample_sd(self,my_population):
         sample_list = sample(my_population, math.floor(len(my_population) / 2))
-        write_answer("answer_sample_sd.csv", round(Sd(sample_list)))
-        return round(Sample_sd(sample_list))
+        write_answer("answer_sample_sd.csv", round(Sd(sample_list),2))
+        return round(Sample_sd(sample_list),2)
 
     def variance_sample_proportion(self,my_population):
-        return round(Variance_sample_proportion(my_population),2)
+        sample_list = sample(my_population, math.floor(len(my_population) / 2))
+        write_answer("answer_sample_proportion.csv", round(Variance(sample_list)))
+        return round(Variance_sample_proportion(sample_list),2)
 
 

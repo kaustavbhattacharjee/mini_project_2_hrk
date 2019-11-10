@@ -1,7 +1,8 @@
 from pprint import pprint
+from Calculator.def_files.Proportion import Proportion
 
 def Variance_sample_proportion(my_population):
-
+    '''
     var1=sum(my_population)
     var2=(var1 * var1)/len(my_population)
     my_list=list()
@@ -11,7 +12,10 @@ def Variance_sample_proportion(my_population):
     var4= var3 - var2
     var5=len(my_population) - 1
     sample_variance=(var4/var5)
-    return sample_variance
+    '''
+    p = Proportion(my_population)
+    v = (p * (1-p)) / len(my_population)
+    return v
 
 
 
