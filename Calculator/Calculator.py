@@ -47,7 +47,7 @@ class Calculator:
         return new_z_score
 
     def standardised_score(self,my_population):
-        new_standardised_score1 = Z_score(my_population)
+        new_standardised_score1 = Standardised_score(my_population)
         new_standardised_score = list()
         for x in new_standardised_score1:
             new_standardised_score.append(round(x, 2))  # creating rounded zscore upto 2 decimal points
