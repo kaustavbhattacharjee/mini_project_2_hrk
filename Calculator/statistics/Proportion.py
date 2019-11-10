@@ -1,4 +1,4 @@
-from Calculator.def_files.Mean import Mean
+from Calculator.statistics.Mean import Mean
 
 
 def Proportion(my_population):
