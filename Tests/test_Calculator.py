@@ -73,7 +73,10 @@ class MyTestCase(unittest.TestCase):
         self.assertNotEqual(self.calculator.variance(my_population), expected_output + 1)  # negative test
 
     def test_p_value(self):
-        pass
+        my_population = read_population("population.csv")
+        expected_output = read_answer("answer_p_value.csv")
+        self.assertEqual(self.calculator.p_value(my_population), expected_output)  # positive test
+        self.assertNotEqual(self.calculator.p_value(my_population), (expected_output + 1))  # negative test
     def test_proportion(self):
         my_population = read_population("population.csv")
         expected_output = read_answer("answer_proportion.csv")

@@ -64,9 +64,9 @@ class Calculator:
     def variance(self,my_population):
         return round(Variance(my_population),2)
 
-    def p_value(self):
-        # return P_value()
-        pass
+    def p_value(self,my_population):
+        confidence_level = 0.95
+        return round(P_value(my_population, confidence_level), 2)
     def proportion(self,my_population):
         p,t = Proportion(my_population)
         return round(p,2)
