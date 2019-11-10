@@ -35,6 +35,8 @@ class Calculator:
 
 
     def variance_popu_proportion(self, my_population):
+        p, proportion_success = Proportion(my_population)
+        write_answer("answer_variance_popu_proportion.csv", round(Variance(proportion_success), 2))
         return round(Variance_popu_proportion(my_population),2)
 
     def z_score(self,my_population):
@@ -66,7 +68,8 @@ class Calculator:
         # return P_value()
         pass
     def proportion(self,my_population):
-        return round(Proportion(my_population),2)
+        p,t = Proportion(my_population)
+        return round(p,2)
 
     def sample_mean(self,my_population):
         sample_list = sample(my_population,math.floor(len(my_population)/2))
@@ -80,7 +83,8 @@ class Calculator:
 
     def variance_sample_proportion(self,my_population):
         sample_list = sample(my_population, math.floor(len(my_population) / 2))
-        write_answer("answer_sample_proportion.csv", round(Variance(sample_list)))
+        p,proportion_success = Proportion(sample_list)
+        write_answer("answer_variance_sample_proportion.csv", round(Variance(proportion_success),2))
         return round(Variance_sample_proportion(sample_list),2)
 
 

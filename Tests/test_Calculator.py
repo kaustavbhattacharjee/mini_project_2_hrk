@@ -37,9 +37,9 @@ class MyTestCase(unittest.TestCase):
 
     def test_variance_popu_proportion(self):
         my_population = read_population("population.csv")
-        expected_output = read_answer("answer_variance_popu_proportion.csv")
-        self.assertEqual(self.calculator.variance_popu_proportion(my_population), expected_output)  # positive test
-        self.assertNotEqual(self.calculator.variance_popu_proportion(my_population),(expected_output + 1))  # negative test
+        #expected_output = read_answer("answer_variance_popu_proportion.csv")
+        self.assertEqual(self.calculator.variance_popu_proportion(my_population), read_answer("answer_variance_popu_proportion.csv"))  # positive test
+        self.assertNotEqual(self.calculator.variance_popu_proportion(my_population),(read_answer("answer_variance_popu_proportion.csv") + 1))  # negative test
 
     def test_z_score(self):
         my_population = read_population("population.csv")
@@ -91,13 +91,10 @@ class MyTestCase(unittest.TestCase):
         self.assertNotEqual(self.calculator.sample_sd(my_population), (read_answer("answer_sample_sd.csv") + 1.5))  # negative test
 
     def test_variance_sample_proportion(self):
-        '''
         my_population = read_population("population.csv")
         #expected_output = read_answer("answer_variance_sample_proportion.csv")
         self.assertEqual(self.calculator.variance_sample_proportion(my_population), read_answer("answer_variance_sample_proportion.csv"))  # positive test
         self.assertNotEqual(self.calculator.variance_sample_proportion(my_population), (read_answer("answer_variance_sample_proportion.csv") + 1))  # negative test
-        '''
-        pass
 
 
 if __name__ == '__main__':
