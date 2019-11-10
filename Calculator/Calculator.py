@@ -62,8 +62,9 @@ class Calculator:
     def variance(self,my_population):
         return round(Variance(my_population),2)
 
-    def p_value(self):
-        # return P_value()
+    def p_value(self,my_population):
+        return P_value(my_population)
+
         pass
     def proportion(self,my_population):
         return Proportion(my_population)
