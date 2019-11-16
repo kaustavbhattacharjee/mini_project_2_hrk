@@ -10,7 +10,11 @@ class MyTestCase(unittest.TestCase):
 
     def test_sample_mean(self):
         my_population = read_population("population.csv")
-        self.assertEqual(self.calculator.sample_mean(my_population),read_answer("answer_sample_mean.csv"))  # positive test
-        self.assertNotEqual(self.calculator.sample_mean(my_population),(read_answer("answer_sample_mean.csv") + 1))  # negative test
+        try:
+            self.assertEqual(self.calculator.sample_mean(my_population),read_answer("answer_sample_mean.csv"))  # positive test
+            self.assertNotEqual(self.calculator.sample_mean(my_population),(read_answer("answer_sample_mean.csv") + 1))  # negative test
+        except AssertionError as e:
+            print("Sample Mean has Assertion Error:", e)
+            assert 0
 if __name__ == '__main__':
     unittest.main()

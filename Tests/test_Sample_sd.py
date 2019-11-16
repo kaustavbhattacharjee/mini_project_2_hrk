@@ -10,8 +10,12 @@ class MyTestCase(unittest.TestCase):
 
     def test_sample_sd(self):
         my_population = read_population("population.csv")
-        self.assertEqual(self.calculator.sample_sd(my_population), read_answer("answer_sample_sd.csv"))  # positive test
-        self.assertNotEqual(self.calculator.sample_sd(my_population),(read_answer("answer_sample_sd.csv") + 1.5))  # negative test
+        try:
+            self.assertEqual(self.calculator.sample_sd(my_population), read_answer("answer_sample_sd.csv"))  # positive test
+            self.assertNotEqual(self.calculator.sample_sd(my_population),(read_answer("answer_sample_sd.csv") + 1.5))  # negative test
+        except AssertionError as e:
+            print("Sample Sd has Assertion Error:", e)
+            assert 0
 
 if __name__ == '__main__':
     unittest.main()

@@ -7,7 +7,11 @@ class MyTestCase(unittest.TestCase):
     calculator = Calculator()
 
     def test_instantiate_calculator(self):
-        self.assertIsInstance(self.calculator, Calculator)
+        try:
+            self.assertIsInstance(self.calculator, Calculator)
+        except AssertionError as e:
+            print("Calculator Instantiation has Assertion Error:", e)
+            assert 0
 
 if __name__ == '__main__':
     unittest.main()

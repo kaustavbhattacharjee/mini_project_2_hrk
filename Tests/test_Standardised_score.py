@@ -11,8 +11,12 @@ class MyTestCase(unittest.TestCase):
     def test_standardised_score(self):
         my_population = read_population("population.csv")
         expected_output = read_answer_list("answer_zscore.csv")
-        self.assertListEqual(self.calculator.z_score(my_population), expected_output)  # positive test
-        self.assertNotEqual(self.calculator.z_score(my_population),(list(map(lambda x: x + 1, expected_output))))  # negative test
+        try:
+            self.assertListEqual(self.calculator.z_score(my_population), expected_output)  # positive test
+            self.assertNotEqual(self.calculator.z_score(my_population),(list(map(lambda x: x + 1, expected_output))))  # negative test
+        except AssertionError as e:
+            print("Standardised Score has Assertion Error:", e)
+            assert 0
 
 if __name__ == '__main__':
     unittest.main()
