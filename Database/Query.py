@@ -1,0 +1,85 @@
+from sqlalchemy import create_engine
+from sqlalchemy import *
+from sqlalchemy.orm import Session
+import Create, Populate
+engine = create_engine("sqlite:///db1.sqlite")
+session = Session(bind=engine)
+
+print("=========Customers=========")
+#prints all the records of  the Customers table
+result = session.query(Create.Customer).all()
+for row in result:
+   print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
+print("===========================")
+
+print("=========Item=========")
+#prints all the records of  the Item table
+result = session.query(Create.Item).all()
+for row in result:
+   print ("Name: ",row.name," Cost Price:",row.cost_price, " Selling Price:",row.selling_price, " Quantity:",row.quantity)
+print("===========================")
+
+print("=========Orders=========")
+#prints all the records of  the Order table
+result = session.query(Create.Order).all()
+for row in result:
+   print ("ID: ",row.id," Date Placed:",row.date_placed, " Customer Id:",row.customer_id)
+print("===========================")
+
+print("=========SQL Query for Customer=========")
+print(session.query(Create.Customer))
+print("===========================")
+
+print("=========count()=========")
+print(session.query(Create.Customer).count()) # get the total number of records in the customers table
+print(session.query(Create.Item).count())  # get the total number of records in the items table
+print(session.query(Create.Order).count()) # get the total number of records in the orders table
+print("===========================")
+
+print("=========first()=========")
+result = session.query(Create.Customer).first()
+print ("Name: ",result.first_name," ",result.last_name, " Address:",result.address, " Email:",result.email)
+
+result = session.query(Create.Item).first()
+print ("Name: ",result.name," Cost Price:",result.cost_price, " Selling Price:",result.selling_price, " Quantity:",result.quantity)
+
+result = session.query(Create.Order).first()
+print ("ID: ",result.id," Date Placed:",result.date_placed, " Customer Id:",result.customer_id)
+print("===========================")
+
+print("=========get()=========")
+result = session.query(Create.Customer).get(1)
+print ("Name: ",result.first_name," ",result.last_name, " Address:",result.address, " Email:",result.email)
+result = session.query(Create.Item).get(1)
+print ("Name: ",result.name," Cost Price:",result.cost_price, " Selling Price:",result.selling_price, " Quantity:",result.quantity)
+result = session.query(Create.Order).get(100)
+if(result != None): print ("ID: ",result.id," Date Placed:",result.date_placed, " Customer Id:",result.customer_id)
+else: print(result)
+print("===========================")
+
+print("=========filter()=========")
+result = session.query(Create.Customer).filter(Create.Customer.first_name == 'John').all()
+print("All customers with name starting with John:")
+for row in result:
+   print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
+
+result = session.query(Create.Customer).filter(Create.Customer.id <= 5, Create.Customer.town.like("Nor%")).all()
+print("All customers with id less than or equal to 5 and living in Norfolk town:")
+for row in result:
+   print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
+
+print("find all customers who either live in Peterbrugh or Norfolk")
+result = session.query(Create.Customer).filter(or_(Create.Customer.town == 'Peterbrugh',Create.Customer.town == 'Norfolk')).all()
+for row in result:
+   print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
+
+print("find all customers whose first name is John and live in Norfolk")
+result = session.query(Create.Customer).filter(and_(Create.Customer.first_name == 'John',Create.Customer.town == 'Norfolk')).all()
+for row in result:
+   print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
+
+print("find all johns who don't live in Peterbrugh")
+result = session.query(Create.Customer).filter(and_(Create.Customer.first_name == 'John',not_(Create.Customer.town == 'Peterbrugh',))).all()
+for row in result:
+   print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
+print("===========================")

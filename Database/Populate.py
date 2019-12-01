@@ -102,5 +102,5 @@ session.add_all([o3])
 session.commit()
 
 #print and check
-print(c1.orders)
-print(o1.customer)
+#print(c1.orders)
+#print(o1.customer)
