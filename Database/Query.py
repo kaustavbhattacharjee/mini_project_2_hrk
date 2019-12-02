@@ -177,3 +177,22 @@ result =  session.query(func.count(Create.Customer.id)).join(Create.Order).filte
 print("~~Number of Orders made by John Green:~~")
 print(result)
 print("===========================")
+'''
+print("\n=========having()=========")
+result =  session.query(
+    func.count("*").label('town_count'),
+    Create.Customer.town
+).group_by(Create.Customer.town).having(func.count("*") > 2).all()
+print("~~find the number of customers lives in each town:~~")
+print(result)
+print("===========================")
+'''
+
+print("\n=========Dealing with Duplicates=========")
+result =  session.query(Create.Customer.town).filter(Create.Customer.id <=10).distinct().all()
+print("~~Distinct towns:~~")
+
+for row in result:
+   print (row.town)
+print("===========================")
+
