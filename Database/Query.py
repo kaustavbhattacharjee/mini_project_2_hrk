@@ -139,3 +139,10 @@ print("~~Printing all customers but limiting to 2:~~")
 for row in result:
    print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
 print("===========================")
+
+print("=========offset()=========")
+result =  session.query(Create.Customer).limit(2).offset(2).all()
+print("~~Printing all customers but limiting to 2 and offsetting to 2:~~")
+for row in result:
+   print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
+print("===========================")
