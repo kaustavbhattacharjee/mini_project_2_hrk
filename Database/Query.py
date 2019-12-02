@@ -83,3 +83,52 @@ result = session.query(Create.Customer).filter(and_(Create.Customer.first_name =
 for row in result:
    print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
 print("===========================")
+print("\n")
+
+print("=========filter() with NOT, NULL, IN, BETWEEN=========")
+result = session.query(Create.Order).filter(Create.Order.date_placed == None).all()
+print("~~All Orders with Date Shipped as None:~~")
+if(result != None):
+   for row in result:
+      print("ID: ", row.id, " Date Placed:", row.date_placed, " Customer Id:", row.customer_id)
+else: print(result)
+
+result = session.query(Create.Order).filter(Create.Order.date_placed != None).all()
+print("~~All Orders with Date Shipped Not as None:~~")
+if(result != None):
+   for row in result:
+      print("ID: ", row.id, " Date Placed:", row.date_placed, " Customer Id:", row.customer_id)
+else: print(result)
+
+
+result = session.query(Create.Customer).filter(Create.Customer.first_name.in_(['Toby', 'Sarah'])).all()
+print("~~All Customers whose name start with Toby or Sarah:~~")
+for row in result:
+   print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
+
+result = session.query(Create.Customer).filter(Create.Customer.first_name.in_(['Toby', 'Sarah'])).all()
+print("~~All Customers whose name does not start with Toby or Sarah:~~")
+for row in result:
+   print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
+
+result =  session.query(Create.Item).filter(Create.Item.cost_price.between(10, 50)).all()
+print("~~All Items whose cost price is between 10 and 50:~~")
+for row in result:
+   print ("Name: ",row.name," Cost Price:",row.cost_price, " Selling Price:",row.selling_price, " Quantity:",row.quantity)
+
+result =  session.query(Create.Item).filter(Create.Item.cost_price.between(10, 50)).all()
+print("~~All Items whose cost price is not between 10 and 50:~~")
+for row in result:
+   print ("Name: ",row.name," Cost Price:",row.cost_price, " Selling Price:",row.selling_price, " Quantity:",row.quantity)
+
+result  = session.query(Create.Item).filter(Create.Item.name.like("%r")).all()
+print("~~All Items whose name ends with r:~~")
+for row in result:
+   print ("Name: ",row.name," Cost Price:",row.cost_price, " Selling Price:",row.selling_price, " Quantity:",row.quantity)
+
+result  = session.query(Create.Item).filter(Create.Item.name.like("w%")).all()
+print("~~All Items whose name starts with w:~~")
+for row in result:
+   print ("Name: ",row.name," Cost Price:",row.cost_price, " Selling Price:",row.selling_price, " Quantity:",row.quantity)
+print("===========================")
+
