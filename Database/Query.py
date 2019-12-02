@@ -160,3 +160,10 @@ print("~~Join between Customer and Order:~~")
 for row in result:
    print (" Order placed on:",row.date_placed)
 print("===========================")
+
+print("\n=========outerjoin()=========")
+result =  session.query(Create.Customer.first_name, Create.Order.id).outerjoin(Create.Order).all()
+print("~~Outer Join between Customer and Order:~~")
+for row in result:
+   print (" Order placed by:",row.first_name, " with Order ID:",row.id)
+print("===========================")
