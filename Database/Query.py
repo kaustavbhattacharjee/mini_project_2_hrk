@@ -1,7 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy import *
 from sqlalchemy.orm import Session
+from sqlalchemy.exc import IntegrityError
 import Create, Populate
+from datetime import datetime
+
 engine = create_engine("sqlite:///db1.sqlite")
 session = Session(bind=engine)
 
@@ -223,6 +226,55 @@ session.commit()
 print("~~Deleting Item Monitor:~~")
 
 print(result.name)
+print("===========================")
+
+
+print("\n=========Transactions=========")
+result = session.query(Create.Order).all()
+
+print("~~Orders Status:~~")
+
+
+def dispatch_order(order_id):
+   # check whether order_id is valid or not
+   order = session.query(Create.Order).get(order_id)
+
+   try:
+      if not order:
+         raise ValueError("Invalid order id: {}.".format(order_id))
+   except ValueError as e:
+      print(e)
+      return
+
+   try:
+      if order.date_shipped:
+         print("Order already shipped.")
+         return
+   except:
+      pass
+
+   try:
+      for i in order.line_items:
+         i.item.quantity = i.item.quantity - i.quantity
+
+      order.date_shipped = datetime.now()
+      session.commit()
+      print("Transaction completed.")
+
+   except IntegrityError as e:
+      print(e)
+      print("Rolling back ...")
+      session.rollback()
+      print("Transaction failed.")
+
+print("~~Orders Status For Order ID 1:~~")
+dispatch_order(1)
+print("~~Orders Status For Order ID 2:~~")
+dispatch_order(2)
+print("~~Orders Status For Order ID 3:~~")
+dispatch_order(3)
+print("~~Orders Status For Order ID 4:~~")
+dispatch_order(4)
 print("===========================")
 
 
