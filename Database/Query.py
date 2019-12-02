@@ -167,3 +167,13 @@ print("~~Outer Join between Customer and Order:~~")
 for row in result:
    print (" Order placed by:",row.first_name, " with Order ID:",row.id)
 print("===========================")
+
+
+print("\n=========groupby()=========")
+result =  session.query(func.count(Create.Customer.id)).join(Create.Order).filter(
+   Create.Customer.first_name == 'John',
+   Create.Customer.last_name == 'Green',
+).group_by(Create.Customer.id).scalar()
+print("~~Number of Orders made by John Green:~~")
+print(result)
+print("===========================")
