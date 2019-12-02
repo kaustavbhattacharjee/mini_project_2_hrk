@@ -216,5 +216,14 @@ print("~~Updating  Item starting with W:~~")
 print(result)
 print("===========================")
 
+print("\n=========Deleting Data=========")
+result = session.query(Create.Item).filter(Create.Item.name == 'Monitor').one()
+session.delete(result)
+session.commit()
+print("~~Deleting Item Monitor:~~")
+
+print(result.name)
+print("===========================")
+
 
 
