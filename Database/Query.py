@@ -196,3 +196,15 @@ for row in result:
    print (row.town)
 print("===========================")
 
+print("\n=========Union=========")
+s1 = session.query(Create.Item.id, Create.Item.name).filter(Create.Item.name.like("Wa%"))
+s2 = session.query(Create.Item.id, Create.Item.name).filter(Create.Item.name.like("%e%"))
+result =  s1.union(s2).all()
+print("~~Distinct towns:~~")
+
+for row in result:
+   print (row)
+print("===========================")
+
+
+
