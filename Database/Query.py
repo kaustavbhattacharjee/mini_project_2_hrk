@@ -200,10 +200,20 @@ print("\n=========Union=========")
 s1 = session.query(Create.Item.id, Create.Item.name).filter(Create.Item.name.like("Wa%"))
 s2 = session.query(Create.Item.id, Create.Item.name).filter(Create.Item.name.like("%e%"))
 result =  s1.union(s2).all()
-print("~~Distinct towns:~~")
+print("~~Union between items starting with Wa and having a e in between:~~")
 
 for row in result:
    print (row)
+print("===========================")
+
+print("\n=========Updating Data=========")
+result = session.query(Create.Item).filter(
+    Create.Item.name.ilike("W%")
+).update({"quantity": 60}, synchronize_session='fetch')
+session.commit()
+print("~~Updating  Item starting with W:~~")
+
+print(result)
 print("===========================")
 
 
