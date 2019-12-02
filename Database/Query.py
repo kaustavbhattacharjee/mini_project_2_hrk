@@ -59,26 +59,26 @@ print("===========================")
 
 print("=========filter()=========")
 result = session.query(Create.Customer).filter(Create.Customer.first_name == 'John').all()
-print("All customers with name starting with John:")
+print("\n~~All customers with name starting with John:~~")
 for row in result:
    print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
 
 result = session.query(Create.Customer).filter(Create.Customer.id <= 5, Create.Customer.town.like("Nor%")).all()
-print("All customers with id less than or equal to 5 and living in Norfolk town:")
+print("\n~~All customers with id less than or equal to 5 and living in Norfolk town:~~")
 for row in result:
    print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
 
-print("find all customers who either live in Peterbrugh or Norfolk")
+print("\n~~find all customers who either live in Peterbrugh or Norfolk~~")
 result = session.query(Create.Customer).filter(or_(Create.Customer.town == 'Peterbrugh',Create.Customer.town == 'Norfolk')).all()
 for row in result:
    print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
 
-print("find all customers whose first name is John and live in Norfolk")
+print("\n~~find all customers whose first name is John and live in Norfolk~~")
 result = session.query(Create.Customer).filter(and_(Create.Customer.first_name == 'John',Create.Customer.town == 'Norfolk')).all()
 for row in result:
    print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
 
-print("find all johns who don't live in Peterbrugh")
+print("\n~~find all johns who don't live in Peterbrugh~~")
 result = session.query(Create.Customer).filter(and_(Create.Customer.first_name == 'John',not_(Create.Customer.town == 'Peterbrugh',))).all()
 for row in result:
    print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
@@ -87,48 +87,55 @@ print("\n")
 
 print("=========filter() with NOT, NULL, IN, BETWEEN=========")
 result = session.query(Create.Order).filter(Create.Order.date_placed == None).all()
-print("~~All Orders with Date Shipped as None:~~")
+print("\n~~All Orders with Date Shipped as None:~~")
 if(result != None):
    for row in result:
       print("ID: ", row.id, " Date Placed:", row.date_placed, " Customer Id:", row.customer_id)
-else: print(result)
+else: print("NO RESULT")
 
 result = session.query(Create.Order).filter(Create.Order.date_placed != None).all()
-print("~~All Orders with Date Shipped Not as None:~~")
+print("\n~~All Orders with Date Shipped Not as None:~~")
 if(result != None):
    for row in result:
       print("ID: ", row.id, " Date Placed:", row.date_placed, " Customer Id:", row.customer_id)
-else: print(result)
+else: print("NO RESULT")
 
 
 result = session.query(Create.Customer).filter(Create.Customer.first_name.in_(['Toby', 'Sarah'])).all()
-print("~~All Customers whose name start with Toby or Sarah:~~")
+print("\n~~All Customers whose name start with Toby or Sarah:~~")
 for row in result:
    print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
 
 result = session.query(Create.Customer).filter(Create.Customer.first_name.in_(['Toby', 'Sarah'])).all()
-print("~~All Customers whose name does not start with Toby or Sarah:~~")
+print("\n~~All Customers whose name does not start with Toby or Sarah:~~")
 for row in result:
    print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
 
 result =  session.query(Create.Item).filter(Create.Item.cost_price.between(10, 50)).all()
-print("~~All Items whose cost price is between 10 and 50:~~")
+print("\n~~All Items whose cost price is between 10 and 50:~~")
 for row in result:
    print ("Name: ",row.name," Cost Price:",row.cost_price, " Selling Price:",row.selling_price, " Quantity:",row.quantity)
 
 result =  session.query(Create.Item).filter(Create.Item.cost_price.between(10, 50)).all()
-print("~~All Items whose cost price is not between 10 and 50:~~")
+print("\n~~All Items whose cost price is not between 10 and 50:~~")
 for row in result:
    print ("Name: ",row.name," Cost Price:",row.cost_price, " Selling Price:",row.selling_price, " Quantity:",row.quantity)
 
 result  = session.query(Create.Item).filter(Create.Item.name.like("%r")).all()
-print("~~All Items whose name ends with r:~~")
+print("\n~~All Items whose name ends with r:~~")
 for row in result:
    print ("Name: ",row.name," Cost Price:",row.cost_price, " Selling Price:",row.selling_price, " Quantity:",row.quantity)
 
 result  = session.query(Create.Item).filter(Create.Item.name.like("w%")).all()
-print("~~All Items whose name starts with w:~~")
+print("\n~~All Items whose name starts with w:~~")
 for row in result:
    print ("Name: ",row.name," Cost Price:",row.cost_price, " Selling Price:",row.selling_price, " Quantity:",row.quantity)
 print("===========================")
 
+
+print("=========limit()=========")
+result =  session.query(Create.Customer).limit(2).all()
+print("~~Printing all customers but limiting to 2:~~")
+for row in result:
+   print ("Name: ",row.first_name," ",row.last_name, " Address:",row.address, " Email:",row.email)
+print("===========================")
