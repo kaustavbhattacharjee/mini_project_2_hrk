@@ -153,3 +153,10 @@ print("~~Printing all items that start with wa and then it is sorted by the cost
 for row in result:
    print ("Name: ",row.name," Cost Price:",row.cost_price, " Selling Price:",row.selling_price, " Quantity:",row.quantity)
 print("===========================")
+
+print("\n=========join()=========")
+result =  session.query(Create.Customer, Create.Order.date_placed).join(Create.Order).all()
+print("~~Join between Customer and Order:~~")
+for row in result:
+   print (" Order placed on:",row.date_placed)
+print("===========================")
